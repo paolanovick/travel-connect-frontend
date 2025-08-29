@@ -10,9 +10,7 @@ function Formulario() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Cambiar esta línea:
-    const backendUrl =
-      process.env.REACT_APP_N8N_WEBHOOK_URL ||
-      "http://167.172.31.249:5678/webhook-test/form";
+    const backendUrl = "/api/webhook";
 
     console.log("Enviando datos:", { nombre, email, mensaje });
 
@@ -24,7 +22,7 @@ function Formulario() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ nombre, email, mensaje }),
-        mode: "cors",
+        
       });
       // resto del código igual...
       const data = await response.json();
