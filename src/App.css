@@ -1,0 +1,758 @@
+/* Reset general y font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Reem Kufi", sans-serif !important;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: #f6f6f6;
+}
+
+/* Estilo del nav */
+nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 90px;
+  padding: 0 1rem;
+  background-color: #fff;
+  position: relative;
+  z-index: 1000;
+}
+
+/* Logo */
+.nav-logo-container img {
+  max-width: 150px;
+  height: auto;
+}
+
+/* Links de escritorio */
+.navBar-links-container {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+/* Enlaces */
+.nav-link {
+  margin-right: 2rem;
+  text-decoration: none;
+  color: #000;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+/* Carrito icono */
+.navbar-cart-icon {
+  font-size: 1.2rem;
+}
+
+/* Botón Reservar */
+.primary-button {
+  padding: 0.9rem 1.75rem;
+  background-color: white;
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.primary-button:hover {
+  background-color: rgb(234, 234, 234);
+}
+
+/* Icono de menú móvil */
+.navbar-menu-container {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+.plan-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  text-align: left;
+}
+
+.plan-benefits li {
+  margin: 0.3rem 0;
+  font-weight: 500;
+  color: #333;
+}
+
+.btn-consultar {
+  margin-top: 1rem;
+  background: #25d366;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+.btn-consultar:hover {
+  background: #1ebe57;
+}
+
+/* Mostrar icono y esconder enlaces en pantallas pequeñas (máx 800px) */
+@media(max-width: 800px) {
+  .navBar-links-container {
+    display: none;
+  }
+  .navbar-menu-container {
+    display: flex;
+  }
+  /* Ajustar logo si quieres más compacto */
+  .nav-logo-container {
+    max-width: 140px;
+  }
+}
+
+/* Estilos para la sección principal (hero) */
+.home-banner-container {
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+   background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.home-bannerImage-container {
+  position: absolute;
+  top: -100px;
+  right: -170px;
+  z-index: -2;
+  max-width: 700px;
+}
+.home-image-section {
+  max-width: 500px;
+  flex: 1;
+  z-index: 1;
+}
+.home-text-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0;
+  margin:0;
+  z-index: 1;
+   max-width: 700px;
+}
+.primary-heading {
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: #4c4c4c;
+  max-width: 600px;
+  line-height: 1.2;
+}
+.primary-text {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  max-width: 500px;
+  color: #6a6a6a;
+  margin: 1.5rem 0;
+}
+.secondary-button {
+  padding: 1rem 2.5rem;
+  background-color: #8cc63f;
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.secondary-button svg {
+  margin-left: 0.75rem;
+  font-size: 1.5rem;
+}
+.secondary-button:hover {
+  background-color: #000000;
+}
+@media (max-width: 1024px) {
+  .home-banner-container {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  .home-text-section {
+    align-items: center;
+  }
+  .home-image-section {
+    max-width: 400px;
+  }
+}
+
+/* Ajusta los márgenes en pantallas pequeñas */
+@media(max-width: 400px) {
+  .home-banner-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+  .home-bannerImage-container {
+    position: static;
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+  .home-text-section {
+    align-items: center;
+    text-align: center;
+  }
+  .primary-heading {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+  .primary-text {
+    font-size: 1.2rem;
+  }
+  .secondary-button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+}
+/* Sección Nosotros - estilos similares a Home, manteniendo tus classes */
+.about-section-container {
+  position: relative;
+  padding: 4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  overflow: hidden; /* para evitar desbordamientos */
+  background-color: transparent; /* para que puedas poner el fondo en un div hijo */
+}
+.about-background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2; /* detrás del contenido */
+  overflow: hidden;
+}
+
+/* Fondo estático */
+.about-background-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+   z-index: -1; /* detrás del contenido */
+}
+.about-background-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+ /* opacidad suave para que no opaque el contenido */
+}
+
+/* Imagen ilustrativa */
+.about-section-image-container {
+  position: relative;
+  flex: 0.9;
+  max-width: 700px;
+  margin-left: 0 auto; /* esto empuja la imagen hacia la derecha */
+  margin-right: 2rem; /* ajusta según prefieras */
+  z-index: 2;
+}
+.about-section-image-container img {
+  width: 100%;
+  height: auto;
+ 
+}
+
+/* Texto */
+.about-section-text-container {
+  position: relative;
+  z-index: 3;
+  max-width: 800px;
+ 
+ 
+}
+.primary-heading {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+  color: #4c4c4c;
+}
+.primary-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  color: #6a6a6a;
+}
+.about-buttons-container {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Responsividad */
+@media(max-width: 1024px) {
+  .about-section-container {
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
+  .about-section-image-container {
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+  }
+}
+/*Planes*/
+
+/* Contenedor principal */
+.work-section-wrapper {
+  padding: 50px 20px;
+  background-color: #f5f5f5; /* color de fondo suave */
+  text-align: center;
+}
+
+/* Título y descripción */
+.work-section-top {
+  margin-bottom: 40px;
+}
+
+.primary-subheading {
+  font-size: 24px;
+  color: #8cc63f; /* color anaranjado */
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.primary-heading {
+  font-size: 36px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.primary-text {
+  font-size: 16px;
+  max-width: 600px;
+  margin: 0 auto 20px;
+  color: #333;
+}
+
+/* Contenedor de los planes */
+.work-section-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px; /* espacio entre cards */
+}
+
+/* Cada tarjeta de plan */
+.work-section-info {
+  background-color: #fff;
+  padding: 20px;
+  width: 250px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.work-section-info:hover {
+  transform: translateY(-5px);
+}
+
+/* Icono */
+.info-boxes-img-container {
+  margin-bottom: 15px;
+}
+
+/* Título del plan */
+.work-section-info h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+/* Beneficios */
+.plan-benefits {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+.plan-benefits li {
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.plan-benefits li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #8cc63f; /* mismo color que el título del subheading */
+}
+.section-title-planes {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  color: #070707; /* ajusta si quieres otro color */
+}
+
+/* Botón */
+.btn-consultar {
+  background-color: #8cc63f;
+  color: #020202;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s;
+}
+
+.btn-consultar:hover {
+  background-color: #00000011;
+}
+/*producto*/
+/* Estilo para la sección completa */
+.products-section {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+
+/* Título */
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  color: #fff; /* ajusta si quieres otro color */
+}
+
+/* Grid para los productos */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Tarjeta del producto */
+.product-card {
+  background: rgba(255, 255, 255, 0.9); /* fondo semi transparente para destacar */
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+  color: #333;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Imagen del producto */
+.product-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+/* Título */
+.product-card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+/* Texto */
+.product-card p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+/* Estilo para las imágenes en las tarjetas */
+/* Clase para la imagen del producto */
+.product-image {
+  width: 100%;           /* Que ocupe todo el ancho del contenedor */
+  height: auto;          /* La altura ajusta automáticamente */
+  max-height: 300px;     /* Opcional: limita la altura máxima */
+  object-fit: cover;     /* Para que la imagen cubra todo sin deformarse */
+  display: block;        /* Para eliminar espacios en línea */
+  border-radius: 8px;    /* Opcional: para mantener la estética */
+}
+.section-title-marcas {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  color: #070707; /* ajusta si quieres otro color */
+}
+/* Reset y tipografía global ya los tienes, no hace falta repetirlo */
+
+/* Estilo para el contenedor del formulario */
+/* Para los títulos y párrafos */
+.section-title-formulario {
+  font-size: 2.5rem;
+  margin-bottom: 2rem; /* mayor separación */
+  font-weight: bold;
+  color: #070707;
+  text-align: center;
+}
+
+
+.form-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff; /* Fondo blanco */
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  font-family: "Reem Kufi", sans-serif;
+   
+}
+
+/* Título del formulario */
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: #4c4c4c;
+    
+   
+}
+
+/* Inputs y textarea */
+.form-container input,
+.form-container textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-family: "Reem Kufi", sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-container input:focus,
+.form-container textarea:focus {
+  border-color: #8cc63f; /* Verde suave */
+  box-shadow: 0 0 8px rgba(140, 198, 63, 0.3);
+  outline: none;
+}
+
+/* Estilo del botón */
+.form-container button {
+  width: 100%;
+  padding: 14px;
+  background-color: #8cc63f; /* Verde */
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.form-container button:hover {
+  background-color: #70a02f;
+  transform: translateY(-2px);
+}
+
+/* Mensaje de confirmación o error */
+.mensaje {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Opcional: efecto en el mensaje */
+.mensaje.success {
+  color: #4CAF50; /* Verde */
+}
+.mensaje.error {
+  color: #f44336; /* Rojo */
+}
+.success {
+  color: green;
+}
+.error {
+  color: red;
+}
+
+/* Estilo general del footer */
+.footer {
+  background-color: #8cc63f;
+  padding: 40px 20px;
+  font-family: "Reem Kufi", sans-serif;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 200px; /* o más, según sea necesario */
+  box-sizing: border-box;
+}
+
+/* Contenedor principal centrado y con máximo ancho */
+.footer-container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Encabezado con logo y contenido */
+.footer-header {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* Logo */
+.footer-logo {
+  width: 150px; /* tamaño ajustable */
+  height: auto;
+}
+
+/* Sección principal del footer (columnas y newsletter) */
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* menos espacio entre columnas */
+  flex: 1;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Columnas con enlaces */
+.footer-column {
+  flex: 1 1 150px;
+  min-width: 120px;
+}
+
+.footer-column h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.footer-column p {
+  margin-bottom: 8px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1rem;
+}
+
+/* Sección de newsletter */
+.footer-newsletter {
+  flex: 1 1 200px;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* asegura que ocupe todo el ancho disponible */
+}
+
+/* Título */
+.footer-newsletter h3 {
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+/* Contenedor del input y botón */
+.newsletter-input {
+  display: flex;
+  gap: 10px;
+  width: 100%; /* aseguramos que ocupe todo el ancho del contenedor */
+}
+
+/* Input */
+.newsletter-input input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  min-width: 0; /* para evitar que el input tenga un tamaño mínimo que cause desbordamiento */
+  box-sizing: border-box; /* para que el padding no aumente el tamaño total */
+}
+
+/* Botón */
+.newsletter-input button {
+  padding: 8px 12px;
+  background-color: #fff;
+  color: #8cc63f;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  flex-shrink: 0; /* evita que el botón se reduzca más allá de su tamaño */
+}
+
+/* Opcional: ajusta tamaño en pantallas pequeñas */
+@media(max-width: 400px){
+  .newsletter-input {
+    flex-direction: column;
+  }
+  .newsletter-input button {
+    width: 100%; /* que el botón ocupe todo el ancho en pantallas pequeñas */
+  }
+}
+/* Redes sociales */
+.footer-socials {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  justify-content: center;
+}
+
+.footer-socials button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+/* Pie de página */
+.footer-bottom {
+  width: 100%;
+  border-top: 1px solid #ccc;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #fff;
+}
