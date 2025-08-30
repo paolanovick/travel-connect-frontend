@@ -1,15 +1,22 @@
-// api/webhook.js
+// api/webhook.js - Sintaxis para Vercel
 export default async function handler(req, res) {
-  // Solo permitir POST
+  // Configurar CORS
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
   try {
-    // URL de tu n8n
-    const n8nUrl = process.env.REACT_APP_N8N_WEBHOOK_URL || 'http://167.172.31.249:5678/webhook-test/form';
+    const n8nUrl = 'http://167.172.31.249:5678/webhook-test/form';
     
-    // Hacer la petición a n8n desde el servidor de Vercel
     const response = await fetch(n8nUrl, {
       method: 'POST',
       headers: {
@@ -18,13 +25,12 @@ export default async function handler(req, res) {
       body: JSON.stringify(req.body),
     });
 
-    const data = await response.json();
+    const data = await response.text(); // Cambiar a text() por si n8n no devuelve JSON válido
     
-    // Devolver la respuesta de n8n
-    res.status(200).json(data);
+    res.status(200).json({ message: 'Enviado correctamente', data: data });
     
   } catch (error) {
-    console.error('Error al conectar con n8n:', error);
+    console.error('Error:', error);
     res.status(500).json({ 
       message: 'Error al enviar datos',
       error: error.message 
