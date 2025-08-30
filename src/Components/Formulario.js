@@ -7,38 +7,37 @@ function Formulario() {
   const [mensajeFormulario, setMensajeFormulario] = useState("");
   const [tipoMensaje, setTipoMensaje] = useState(""); // éxito o error
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Cambiar esta línea:
-    const backendUrl = "/api/webhook";
+ const handleSubmit = async (e) => {
+   e.preventDefault();
+   // Cambiar esta línea para apuntar directamente a n8n:
+   const backendUrl = "http://167.172.31.249:5678/webhook/form";
 
-    console.log("Enviando datos:", { nombre, email, mensaje });
+   console.log("Enviando datos:", { nombre, email, mensaje });
 
-    try {
-      const response = await fetch(backendUrl, {
-        // Sin /api/webhook
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ nombre, email, mensaje }),
-        
-      });
-      // resto del código igual...
-      const data = await response.json();
-      console.log("Respuesta JSON:", data);
+   try {
+     const response = await fetch(backendUrl, {
+       method: "POST",
+       headers: {
+         "Content-Type": "application/json",
+       },
+       body: JSON.stringify({ nombre, email, mensaje }),
+     });
 
-      setMensajeFormulario(data.message || "Mensaje enviado");
-      setTipoMensaje("success");
-      setNombre("");
-      setEmail("");
-      setMensaje("");
-    } catch (error) {
-      console.error("Error en fetch:", error);
-      setMensajeFormulario("Error en la red o en el servidor");
-      setTipoMensaje("error");
-    }
-  };
+     
+     const data = await response.json();
+     console.log("Respuesta JSON:", data);
+
+     setMensajeFormulario(data.message || "Mensaje enviado");
+     setTipoMensaje("success");
+     setNombre("");
+     setEmail("");
+     setMensaje("");
+   } catch (error) {
+     console.error("Error en fetch:", error);
+     setMensajeFormulario("Error en la red o en el servidor");
+     setTipoMensaje("error");
+   }
+ };
 
   return (
     <div className="work-section-wrapper">
