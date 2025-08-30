@@ -10,7 +10,7 @@ function Formulario() {
  const handleSubmit = async (e) => {
    e.preventDefault();
    // Cambiar esta línea para apuntar directamente a n8n:
-   const backendUrl = "http://167.172.31.249:5678/webhook/form";
+   const backendUrl = "/api/webhook";
 
    console.log("Enviando datos:", { nombre, email, mensaje });
 
