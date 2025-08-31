@@ -126,19 +126,17 @@ nav {
   }
 }
 
-/* Estilos para la sección principal (hero) - CORREGIDO */
+/* Estilos para la sección principal (hero) */
 .home-banner-container {
-  display: flex;
+    display: flex;
   align-items: center;
   justify-content: center;
   gap: 2rem;
   padding: 2rem;
-  background-size: cover;
+   background-size: cover;
   background-position: center;
   position: relative;
-  min-height: 500px; /* altura mínima */
 }
-
 .home-bannerImage-container {
   position: absolute;
   top: -100px;
@@ -146,13 +144,11 @@ nav {
   z-index: -2;
   max-width: 700px;
 }
-
 .home-image-section {
   max-width: 500px;
   flex: 1;
   z-index: 1;
 }
-
 .home-text-section {
   flex: 1;
   display: flex;
@@ -160,25 +156,22 @@ nav {
   justify-content: center;
   align-items: flex-start;
   padding: 0;
-  margin: 0;
+  margin:0;
   z-index: 1;
-  max-width: 700px;
+   max-width: 700px;
 }
-
 .primary-heading {
   font-size: clamp(2rem, 5vw, 4rem);
   color: #4c4c4c;
   max-width: 600px;
   line-height: 1.2;
 }
-
 .primary-text {
   font-size: clamp(1rem, 3vw, 1.5rem);
   max-width: 500px;
   color: #6a6a6a;
   margin: 1.5rem 0;
 }
-
 .secondary-button {
   padding: 1rem 2.5rem;
   background-color: #8cc63f;
@@ -194,275 +187,141 @@ nav {
   align-items: center;
   justify-content: center;
 }
-
 .secondary-button svg {
   margin-left: 0.75rem;
   font-size: 1.5rem;
 }
-
 .secondary-button:hover {
   background-color: #000000;
 }
-
-/* MEDIA QUERIES CORREGIDAS PARA HOME - SIN OPACIDAD */
 @media (max-width: 1024px) {
   .home-banner-container {
     flex-direction: column-reverse;
     text-align: center;
     gap: 1.5rem;
-    padding: 2rem 1rem;
   }
-  
-  .home-bannerImage-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1; /* mantiene como fondo */
-    max-width: 100%;
-  }
-  
-  .home-bannerImage-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* SIN OPACIDAD - background verde completo */
-  }
-  
   .home-text-section {
     align-items: center;
-    z-index: 2; /* por encima del background */
   }
-  
   .home-image-section {
     max-width: 400px;
-    height: 400px; /* altura fija para consistencia */
-    z-index: 2; /* por encima del background */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .home-image-section img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* mantiene proporciones sin recortar */
-    border-radius: 50%; /* imagen redonda */
   }
 }
 
-/* Ajustes específicos para pantallas muy pequeñas */
+/* Ajusta los márgenes en pantallas pequeñas */
 @media(max-width: 400px) {
   .home-banner-container {
     flex-direction: column;
     align-items: center;
     padding: 2rem 1rem;
-    min-height: 600px; /* más altura en móviles */
   }
-  
   .home-bannerImage-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
+    position: static;
     max-width: 100%;
+    margin-bottom: 2rem;
   }
-  
-  .home-bannerImage-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* SIN OPACIDAD - background verde completo */
-  }
-  
   .home-text-section {
     align-items: center;
     text-align: center;
-    z-index: 2;
   }
-  
-  .home-image-section {
-    z-index: 2;
-    width: 300px; /* tamaño fijo */
-    height: 300px; /* tamaño fijo */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .home-image-section img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* mantiene proporciones */
-    border-radius: 50%; /* imagen redonda */
-  }
-  
   .primary-heading {
     font-size: clamp(2rem, 6vw, 3rem);
   }
-  
   .primary-text {
     font-size: 1.2rem;
   }
-  
   .secondary-button {
     padding: 0.8rem 2rem;
     font-size: 1rem;
   }
 }
-
-/* Sección Nosotros - estructura igual que Home */
+/* Sección Nosotros - estilos similares a Home, manteniendo tus classes */
 .about-section-container {
   position: relative;
+  padding: 4rem 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  padding: 2rem;
-  background-size: cover;
-  background-position: center;
-  min-height: 500px; /* altura mínima igual que home */
+  overflow: hidden; /* para evitar desbordamientos */
+  background-color: transparent; /* para que puedas poner el fondo en un div hijo */
 }
-
-/* Background principal (about-background.png) - igual que home-banner-background.png */
 .about-background-container {
   position: absolute;
-  top: -100px;
-  right: -170px;
-  z-index: -2;
-  max-width: 700px;
-}
-
-.about-background-container img {
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
+  z-index: -2; /* detrás del contenido */
+  overflow: hidden;
 }
 
-/* Imagen ilustrativa (about-background-image.png) - igual que home-banner-image.png */
+/* Fondo estático */
+.about-background-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+   z-index: -1; /* detrás del contenido */
+}
+.about-background-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+ /* opacidad suave para que no opaque el contenido */
+}
+
+/* Imagen ilustrativa */
 .about-section-image-container {
-  max-width: 500px;
-  flex: 1;
-  z-index: 1;
+  position: relative;
+  flex: 0.9;
+  max-width: 700px;
+  margin-left: 0 auto; /* esto empuja la imagen hacia la derecha */
+  margin-right: 2rem; /* ajusta según prefieras */
+  z-index: 2;
 }
-
 .about-section-image-container img {
   width: 100%;
   height: auto;
+ 
 }
 
 /* Texto */
 .about-section-text-container {
-  flex: 1;
+  position: relative;
+  z-index: 3;
+  max-width: 800px;
+ 
+ 
+}
+.primary-heading {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+  color: #4c4c4c;
+}
+.primary-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  color: #6a6a6a;
+}
+.about-buttons-container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 0;
-  margin: 0;
-  z-index: 1;
-  max-width: 700px;
+  gap: 1rem;
 }
 
-/* MEDIA QUERIES PARA ABOUT - COMPORTAMIENTO IDÉNTICO A HOME */
-@media (max-width: 1024px) {
-  .about-section-container {
-    flex-direction: column-reverse;
-    text-align: center;
-    gap: 1.5rem;
-    padding: 2rem 1rem;
-  }
-  
-  .about-background-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1; /* mantiene como fondo */
-    max-width: 100%;
-  }
-  
-  .about-background-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* SIN OPACIDAD - background verde completo igual que home */
-  }
-  
-  .about-section-text-container {
-    align-items: center;
-    z-index: 2; /* por encima del background */
-  }
-  
-  .about-section-image-container {
-    max-width: 400px;
-    height: 400px; /* altura fija para consistencia igual que home */
-    z-index: 2; /* por encima del background */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .about-section-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* mantiene proporciones sin recortar */
-    border-radius: 50%; /* imagen redonda igual que home */
-  }
-}
-
-/* Media query para móviles pequeños en about - IDÉNTICO A HOME */
-@media(max-width: 400px) {
+/* Responsividad */
+@media(max-width: 1024px) {
   .about-section-container {
     flex-direction: column;
-    align-items: center;
     padding: 2rem 1rem;
-    min-height: 600px; /* más altura en móviles igual que home */
   }
-  
-  .about-background-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    max-width: 100%;
-  }
-  
-  .about-background-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* SIN OPACIDAD - background verde completo igual que home */
-  }
-  
-  .about-section-text-container {
-    align-items: center;
-    text-align: center;
-    z-index: 2;
-  }
-  
   .about-section-image-container {
-    z-index: 2;
-    width: 300px; /* mismo tamaño que home */
-    height: 300px; /* mismo tamaño que home */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .about-section-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* mantiene proporciones */
-    border-radius: 50%; /* imagen redonda igual que home */
+    margin-right: 0;
+    margin-bottom: 1.5rem;
   }
 }
-
 /*Planes*/
 
 /* Contenedor principal */
@@ -672,6 +531,7 @@ nav {
   text-align: center;
 }
 
+
 .form-container {
   max-width: 500px;
   margin: 2rem auto;
@@ -680,6 +540,7 @@ nav {
   border-radius: 15px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   font-family: "Reem Kufi", sans-serif;
+   
 }
 
 /* Título del formulario */
@@ -688,6 +549,8 @@ nav {
   margin-bottom: 1.5rem;
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   color: #4c4c4c;
+    
+   
 }
 
 /* Inputs y textarea */
