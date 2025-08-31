@@ -8,67 +8,67 @@ import { FiArrowRight } from "react-icons/fi";
 const Nosotros = () => {
   return (
     <>
-      {/* Primera sección - originalmente de Home */}
-      <div className="home-banner-container">
+      {/* Contenedor unificado con background continuo */}
+      <div className="home-banner-container unified-sections">
+        {/* Background verde continuo */}
         <div className="home-bannerImage-container">
           <img src={BannerBackground} alt="Fondo del banner principal" />
         </div>
-        <div className="home-text-section">
-          <h1 className="primary-heading">
-            Soluciones Tecnológicas para Agencias de Viajes
-          </h1>
-          <p className="primary-text">
-            Travel Connect es una plataforma tecnológica diseñada especialmente
-            para agencias de viajes que desean modernizar su operación y
-            aumentar su competitividad. Ofrecemos sitios web completamente
-            funcionales e integrados con los principales mayoristas del turismo,
-            permitiendo mostrar paquetes turísticos en tarjetas por destino y
-            realizar búsquedas de hoteles en tiempo real. Nuestra solución
-            también permite a las agencias cargar sus propios paquetes
-            personalizados, gestionar reservas mediante un sistema intuitivo con
-            formularios modales, y establecer contacto directo con los clientes
-            a través de WhatsApp, integrando un chatbot con inteligencia
-            artificial que responde de forma automática tanto desde la web como
-            desde redes sociales.
-          </p>
-          <button className="secondary-button">
-            Descubre Más <FiArrowRight />
-          </button>
-        </div>
-        <div className="home-image-section">
-          <img src={BannerImage} alt="Imagen ilustrativa de viajes" />
-        </div>
-      </div>
 
-      
-
-      {/* Tercera sección - igual al div 1 pero con background del div 2 y orden invertido */}
-      <div className="home-banner-container">
-       
-        <div className="home-image-section">
-          <img src={BannerImage} alt="Imagen ilustrativa de viajes" />
+        {/* Primera sección */}
+        <div className="section-content">
+          <div className="home-text-section">
+            <h1 className="primary-heading">
+              Soluciones Tecnológicas para Agencias de Viajes
+            </h1>
+            <p className="primary-text">
+              Travel Connect es una plataforma tecnológica diseñada
+              especialmente para agencias de viajes que desean modernizar su
+              operación y aumentar su competitividad. Ofrecemos sitios web
+              completamente funcionales e integrados con los principales
+              mayoristas del turismo, permitiendo mostrar paquetes turísticos en
+              tarjetas por destino y realizar búsquedas de hoteles en tiempo
+              real. Nuestra solución también permite a las agencias cargar sus
+              propios paquetes personalizados, gestionar reservas mediante un
+              sistema intuitivo con formularios modales, y establecer contacto
+              directo con los clientes a través de WhatsApp, integrando un
+              chatbot con inteligencia artificial que responde de forma
+              automática tanto desde la web como desde redes sociales.
+            </p>
+            <button className="secondary-button">
+              Descubre Más <FiArrowRight />
+            </button>
+          </div>
+          <div className="home-image-section">
+            <img src={BannerImage} alt="Imagen ilustrativa de viajes" />
+          </div>
         </div>
-        <div className="home-text-section">
-          <h1 className="primary-heading">
-            Soluciones Tecnológicas para Agencias de Viajes
-          </h1>
-          <p className="primary-text">
-            Travel Connect es una plataforma tecnológica diseñada especialmente
-            para agencias de viajes que desean modernizar su operación y
-            aumentar su competitividad. Ofrecemos sitios web completamente
-            funcionales e integrados con los principales mayoristas del turismo,
-            permitiendo mostrar paquetes turísticos en tarjetas por destino y
-            realizar búsquedas de hoteles en tiempo real. Nuestra solución
-            también permite a las agencias cargar sus propios paquetes
-            personalizados, gestionar reservas mediante un sistema intuitivo con
-            formularios modales, y establecer contacto directo con los clientes
-            a través de WhatsApp, integrando un chatbot con inteligencia
-            artificial que responde de forma automática tanto desde la web como
-            desde redes sociales.
-          </p>
-          <button className="secondary-button">
-            Descubre Más <FiArrowRight />
-          </button>
+
+        {/* Segunda sección con orden invertido */}
+        <div className="section-content reverse-order">
+          <div className="home-image-section">
+            <img src={BannerImage} alt="Imagen ilustrativa de viajes" />
+          </div>
+          <div className="home-text-section">
+            <h1 className="primary-heading">
+              Automatización, CRM y Chatbot Omnicanal
+            </h1>
+            <p className="primary-text">
+              Además del sitio web, Travel Connect ofrece un CRM completamente
+              integrado con el chatbot, que centraliza y gestiona todas las
+              consultas recibidas desde la web, WhatsApp y redes sociales. Esto
+              permite a las agencias tener una visión completa del cliente,
+              mejorar el seguimiento de oportunidades y automatizar respuestas
+              frecuentes. Con nuestras herramientas, las agencias pueden
+              optimizar su tiempo, profesionalizar su atención al cliente y
+              aumentar sus ventas. Travel Connect no solo brinda tecnología,
+              sino una transformación completa del modelo de negocio para el
+              ecosistema digital actual.
+            </p>
+            <button className="secondary-button">
+              Descubre Más <FiArrowRight />
+            </button>
+          </div>
         </div>
       </div>
     </>
