@@ -127,65 +127,80 @@ nav {
   }
 }
 
-/* NUEVA ESTRUCTURA: Contenedor unificado para secciones con background continuo */
-.home-banner-container.unified-sections {
-  display: flex;
-  flex-direction: column;
+/* Wrapper para eliminar espacios entre secciones */
+.nosotros-wrapper {
   position: relative;
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh; /* Asegura altura suficiente para ambas secciones */
-  padding: 0; /* Sin padding en el contenedor principal */
 }
 
-/* Background verde continuo que cubre todo el contenedor */
-.unified-sections .home-bannerImage-container {
+/* Estilos para la sección principal (hero) - MANTENER ORIGINAL */
+.home-banner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  min-height: 500px;
+}
+
+/* Eliminar margen entre secciones */
+.home-banner-container.first-section {
+  margin-bottom: 0;
+}
+
+.home-banner-container.second-section {
+  margin-top: 0;
+}
+
+/* Background siempre en la parte superior derecha - ORIGINAL */
+.home-bannerImage-container {
   position: absolute;
   top: 0;
   right: 0;
   z-index: -2;
-  width: 60%; /* Ajusta el ancho según prefieras */
+  max-width: 700px;
+  width: 50%;
   height: 100%;
 }
 
-.unified-sections .home-bannerImage-container img {
+.home-bannerImage-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Cada sección de contenido */
-.section-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  padding: 4rem 2rem; /* Padding individual para cada sección */
-  position: relative;
-  z-index: 1;
-  min-height: 50vh; /* Cada sección ocupa al menos la mitad de la pantalla */
+/* Hacer la imagen responsiva en pantallas medianas */
+@media (max-width: 1200px) {
+  .home-bannerImage-container {
+    width: 60%;
+  }
 }
 
-/* Orden normal para la primera sección */
-.section-content .home-text-section {
+/* Hacer la imagen responsiva en pantallas pequeñas */
+@media (max-width: 800px) {
+  .home-bannerImage-container {
+    width: 70%;
+  }
+}
+
+.home-image-section {
+  max-width: 500px;
+  flex: 1;
+  z-index: 1;
+}
+
+.home-text-section {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  max-width: 700px;
-  z-index: 2;
-}
-
-.section-content .home-image-section {
-  flex: 1;
-  max-width: 500px;
+  padding: 0;
+  margin: 0;
   z-index: 1;
-}
-
-/* Orden invertido para la segunda sección */
-.section-content.reverse-order {
-  flex-direction: row-reverse;
+  max-width: 700px;
 }
 
 /* Estilos de texto y botones (mantener los originales) */
@@ -229,37 +244,57 @@ nav {
   background-color: #000000;
 }
 
-/* Responsividad para las secciones unificadas */
-@media (max-width: 1200px) {
-  .unified-sections .home-bannerImage-container {
-    width: 70%;
+/* CORRECCIÓN: Responsive para móviles - MANTENER COMPORTAMIENTO ORIGINAL */
+@media (max-width: 1024px) {
+  .home-banner-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    align-items: center;
+  }
+  
+  .home-text-section {
+    align-items: center;
+    text-align: center;
+    order: 2; /* El texto va después de la imagen */
+    z-index: 2;
+  }
+  
+  .home-image-section {
+    max-width: 400px;
+    order: 1; /* La imagen va primero */
+    z-index: 1;
+    margin-bottom: 1rem;
+  }
+  
+  /* Asegurar que el fondo verde se mantenga */
+  .home-bannerImage-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
   }
 }
 
+/* Para la segunda sección - mantener orden normal */
+.home-banner-container.second-section {
+  flex-direction: column;
+}
+
 @media (max-width: 1024px) {
-  .section-content,
-  .section-content.reverse-order {
-    flex-direction: column;
-    text-align: center;
-    gap: 2rem;
-    padding: 3rem 1rem;
+  .home-banner-container.second-section {
+    flex-direction: column; /* Mantener orden normal, no reverse */
   }
   
-  .section-content .home-text-section {
-    align-items: center;
-    text-align: center;
-    order: 2; /* Texto siempre abajo en móvil */
+  .home-banner-container.second-section .home-image-section {
+    order: 1; /* Imagen arriba */
   }
   
-  .section-content .home-image-section,
-  .section-content.reverse-order .home-image-section {
-    max-width: 400px;
-    order: 1; /* Imagen siempre arriba en móvil */
-  }
-  
-  /* Background verde cubre toda la pantalla en móvil */
-  .unified-sections .home-bannerImage-container {
-    width: 100%;
+  .home-banner-container.second-section .home-text-section {
+    order: 2; /* Texto abajo */
   }
 }
 
