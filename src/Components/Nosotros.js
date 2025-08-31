@@ -43,6 +43,7 @@ const Nosotros = () => {
       {/* Segunda sección - original de Nosotros */}
       <div className="about-section-container">
         <div className="about-background-container">
+          <img src={BannerBackground} alt="Fondo del banner principal" />
           <img src={AboutBackground} alt="Fondo de la sección Sobre Nosotros" />
         </div>
         <div className="about-section-image-container">
