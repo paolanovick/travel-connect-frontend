@@ -126,17 +126,19 @@ nav {
   }
 }
 
-/* Estilos para la sección principal (hero) */
+/* Estilos para la sección principal (hero) - CORREGIDO */
 .home-banner-container {
-    display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 2rem;
   padding: 2rem;
-   background-size: cover;
+  background-size: cover;
   background-position: center;
   position: relative;
+  min-height: 500px; /* altura mínima */
 }
+
 .home-bannerImage-container {
   position: absolute;
   top: -100px;
@@ -144,11 +146,13 @@ nav {
   z-index: -2;
   max-width: 700px;
 }
+
 .home-image-section {
   max-width: 500px;
   flex: 1;
   z-index: 1;
 }
+
 .home-text-section {
   flex: 1;
   display: flex;
@@ -156,22 +160,25 @@ nav {
   justify-content: center;
   align-items: flex-start;
   padding: 0;
-  margin:0;
+  margin: 0;
   z-index: 1;
-   max-width: 700px;
+  max-width: 700px;
 }
+
 .primary-heading {
   font-size: clamp(2rem, 5vw, 4rem);
   color: #4c4c4c;
   max-width: 600px;
   line-height: 1.2;
 }
+
 .primary-text {
   font-size: clamp(1rem, 3vw, 1.5rem);
   max-width: 500px;
   color: #6a6a6a;
   margin: 1.5rem 0;
 }
+
 .secondary-button {
   padding: 1rem 2.5rem;
   background-color: #8cc63f;
@@ -187,54 +194,104 @@ nav {
   align-items: center;
   justify-content: center;
 }
+
 .secondary-button svg {
   margin-left: 0.75rem;
   font-size: 1.5rem;
 }
+
 .secondary-button:hover {
   background-color: #000000;
 }
+
+/* MEDIA QUERIES CORREGIDAS PARA HOME */
 @media (max-width: 1024px) {
   .home-banner-container {
     flex-direction: column-reverse;
     text-align: center;
     gap: 1.5rem;
+    padding: 2rem 1rem;
   }
+  
+  .home-bannerImage-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1; /* mantiene como fondo */
+    max-width: 100%;
+  }
+  
+  .home-bannerImage-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3; /* para que no interfiera con el contenido */
+  }
+  
   .home-text-section {
     align-items: center;
+    z-index: 2; /* por encima del background */
   }
+  
   .home-image-section {
     max-width: 400px;
+    z-index: 2; /* por encima del background */
   }
 }
 
-/* Ajusta los márgenes en pantallas pequeñas */
+/* Ajustes específicos para pantallas muy pequeñas */
 @media(max-width: 400px) {
   .home-banner-container {
     flex-direction: column;
     align-items: center;
     padding: 2rem 1rem;
+    min-height: 600px; /* más altura en móviles */
   }
+  
   .home-bannerImage-container {
-    position: static;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
     max-width: 100%;
-    margin-bottom: 2rem;
   }
+  
+  .home-bannerImage-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2; /* más transparente en móviles pequeños */
+  }
+  
   .home-text-section {
     align-items: center;
     text-align: center;
+    z-index: 2;
   }
+  
+  .home-image-section {
+    z-index: 2;
+    max-width: 300px; /* más pequeña en móviles */
+  }
+  
   .primary-heading {
     font-size: clamp(2rem, 6vw, 3rem);
   }
+  
   .primary-text {
     font-size: 1.2rem;
   }
+  
   .secondary-button {
     padding: 0.8rem 2rem;
     font-size: 1rem;
   }
 }
+
 /* Sección Nosotros - estilos similares a Home, manteniendo tus classes */
 .about-section-container {
   position: relative;
@@ -284,7 +341,6 @@ nav {
 .about-section-image-container img {
   width: 100%;
   height: auto;
- 
 }
 
 /* Texto */
@@ -292,26 +348,9 @@ nav {
   position: relative;
   z-index: 3;
   max-width: 800px;
- 
- 
-}
-.primary-heading {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-bottom: 1rem;
-  color: #4c4c4c;
-}
-.primary-text {
-  font-size: 1rem;
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-  color: #6a6a6a;
-}
-.about-buttons-container {
-  display: flex;
-  gap: 1rem;
 }
 
-/* Responsividad */
+/* MEDIA QUERIES CORREGIDAS PARA ABOUT */
 @media(max-width: 1024px) {
   .about-section-container {
     flex-direction: column;
@@ -321,7 +360,13 @@ nav {
     margin-right: 0;
     margin-bottom: 1.5rem;
   }
+  
+  /* Mantener el background image como fondo en móviles también */
+  .about-background-image-container img {
+    opacity: 0.3; /* más transparente en móviles */
+  }
 }
+
 /*Planes*/
 
 /* Contenedor principal */
@@ -531,7 +576,6 @@ nav {
   text-align: center;
 }
 
-
 .form-container {
   max-width: 500px;
   margin: 2rem auto;
@@ -540,7 +584,6 @@ nav {
   border-radius: 15px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   font-family: "Reem Kufi", sans-serif;
-   
 }
 
 /* Título del formulario */
@@ -549,8 +592,6 @@ nav {
   margin-bottom: 1.5rem;
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   color: #4c4c4c;
-    
-   
 }
 
 /* Inputs y textarea */
