@@ -165,15 +165,14 @@ nav {
   }
 }
 
-/* En pantallas muy pequeñas, mover la imagen de fondo */
+/* En pantallas muy pequeñas, ajustar posición del background */
 @media (max-width: 600px) {
   .home-bannerImage-container {
     position: absolute;
-    top: auto;
-    right: auto;
-    bottom: 0;
-    left: 0;
-    max-width: 100%;
+    top: 50%;
+    right: -50px;
+    transform: translateY(-50%);
+    max-width: 60%;
     z-index: -2;
   }
 }
