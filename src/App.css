@@ -242,6 +242,17 @@ nav {
   }
 }
 
+/* Específico para el div 3 - orden normal en lugar de reverse */
+.home-banner-container:last-child {
+  flex-direction: column;
+}
+
+@media (max-width: 1024px) {
+  .home-banner-container:last-child {
+    flex-direction: column-reverse;
+  }
+}
+
 /* Ajusta los márgenes en pantallas pequeñas */
 @media(max-width: 400px) {
   .home-banner-container {
