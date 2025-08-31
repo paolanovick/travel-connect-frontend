@@ -173,6 +173,20 @@ nav {
     margin-bottom: 1rem;
     top: auto;
     right: auto;
+    z-index: -1;
+    order: 3; /* Esto lo pone al final en el orden flex */
+  }
+  
+  .home-banner-container {
+    flex-direction: column;
+  }
+  
+  .home-text-section {
+    order: 1; /* Texto primero */
+  }
+  
+  .home-image-section {
+    order: 2; /* Imagen del contenido segundo */
   }
 }
 
