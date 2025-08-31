@@ -44,9 +44,7 @@ const Nosotros = () => {
 
       {/* Tercera sección - igual al div 1 pero con background del div 2 y orden invertido */}
       <div className="home-banner-container">
-        <div className="about-background-container">
-          <img src={AboutBackground} alt="Fondo de la sección" />
-        </div>
+       
         <div className="home-image-section">
           <img src={BannerImage} alt="Imagen ilustrativa de viajes" />
         </div>
