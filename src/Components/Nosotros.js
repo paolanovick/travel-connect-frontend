@@ -40,11 +40,8 @@ const Nosotros = () => {
         </div>
       </div>
 
-      {/* Segunda sección - con background extendido */}
-      <div className="home-banner-container second-section">
-        <div className="home-bannerImage-container">
-          <img src={BannerBackground} alt="Fondo del banner principal" />
-        </div>
+      {/* Segunda sección - sin background, imagen a la izquierda */}
+      <div className="home-banner-container second-section no-background">
         <div className="home-image-section">
           <img src={BannerImage} alt="Imagen ilustrativa de viajes" />
         </div>

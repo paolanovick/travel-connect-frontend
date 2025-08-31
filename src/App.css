@@ -279,14 +279,25 @@ nav {
   }
 }
 
+/* Segunda sección sin background */
+.home-banner-container.second-section.no-background {
+  background: transparent;
+  flex-direction: row; /* Forzar fila en desktop */
+}
+
+/* NO mostrar background en la segunda sección */
+.home-banner-container.second-section.no-background .home-bannerImage-container {
+  display: none;
+}
+
 /* Para la segunda sección - mantener orden normal */
 .home-banner-container.second-section {
-  flex-direction: column;
+  flex-direction: row; /* Cambiar a row en lugar de column */
 }
 
 @media (max-width: 1024px) {
   .home-banner-container.second-section {
-    flex-direction: column; /* Mantener orden normal, no reverse */
+    flex-direction: column; /* Solo en móvil cambiar a column */
   }
   
   .home-banner-container.second-section .home-image-section {
