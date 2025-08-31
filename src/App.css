@@ -204,7 +204,7 @@ nav {
   background-color: #000000;
 }
 
-/* MEDIA QUERIES CORREGIDAS PARA HOME */
+/* MEDIA QUERIES CORREGIDAS PARA HOME - SIN OPACIDAD */
 @media (max-width: 1024px) {
   .home-banner-container {
     flex-direction: column-reverse;
@@ -227,7 +227,7 @@ nav {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.3; /* para que no interfiera con el contenido */
+    /* SIN OPACIDAD - background verde completo */
   }
   
   .home-text-section {
@@ -237,7 +237,18 @@ nav {
   
   .home-image-section {
     max-width: 400px;
+    height: 400px; /* altura fija para consistencia */
     z-index: 2; /* por encima del background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .home-image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* mantiene proporciones sin recortar */
+    border-radius: 50%; /* imagen redonda */
   }
 }
 
@@ -264,7 +275,7 @@ nav {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.2; /* más transparente en móviles pequeños */
+    /* SIN OPACIDAD - background verde completo */
   }
   
   .home-text-section {
@@ -275,7 +286,18 @@ nav {
   
   .home-image-section {
     z-index: 2;
-    max-width: 300px; /* más pequeña en móviles */
+    width: 300px; /* tamaño fijo */
+    height: 300px; /* tamaño fijo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .home-image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* mantiene proporciones */
+    border-radius: 50%; /* imagen redonda */
   }
   
   .primary-heading {
@@ -350,20 +372,51 @@ nav {
   max-width: 800px;
 }
 
-/* MEDIA QUERIES CORREGIDAS PARA ABOUT */
+/* MEDIA QUERIES CORREGIDAS PARA ABOUT - SIN OPACIDAD */
 @media(max-width: 1024px) {
   .about-section-container {
     flex-direction: column;
     padding: 2rem 1rem;
   }
+  
   .about-section-image-container {
     margin-right: 0;
     margin-bottom: 1.5rem;
+    width: 400px; /* tamaño fijo igual que home */
+    height: 400px; /* altura fija para consistencia */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
-  /* Mantener el background image como fondo en móviles también */
+  .about-section-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* mantiene proporciones sin recortar */
+    border-radius: 50%; /* imagen redonda */
+  }
+  
+  /* Background image SIN opacidad - igual que home */
   .about-background-image-container img {
-    opacity: 0.3; /* más transparente en móviles */
+    /* SIN OPACIDAD - background verde completo igual que home */
+  }
+}
+
+/* Media query para móviles pequeños en about */
+@media(max-width: 400px) {
+  .about-section-image-container {
+    width: 300px; /* mismo tamaño que home */
+    height: 300px; /* mismo tamaño que home */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .about-section-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* mantiene proporciones */
+    border-radius: 50%; /* imagen redonda */
   }
 }
 
