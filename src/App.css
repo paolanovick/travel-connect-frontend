@@ -136,6 +136,7 @@ nav {
   background-size: cover;
   background-position: center;
   position: relative;
+  min-height: 500px;
 }
 
 /* Background siempre en la parte superior derecha */
@@ -169,39 +170,12 @@ nav {
   }
 }
 
-/* En pantallas muy pequeñas, mantener background arriba */
-@media (max-width: 600px) {
-  .home-banner-container {
-    flex-direction: column;
-    padding: 1rem;
-  }
-  
-  .home-bannerImage-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 60%;
-    z-index: -2;
-  }
-  
-  .home-image-section {
-    z-index: 1;
-    margin-top: 2rem;
-  }
-  
-  .home-text-section {
-    z-index: 2;
-    margin-top: auto;
-    order: 2;
-  }
-}
-
 .home-image-section {
   max-width: 500px;
   flex: 1;
   z-index: 1;
 }
+
 .home-text-section {
   flex: 1;
   display: flex;
@@ -209,22 +183,25 @@ nav {
   justify-content: center;
   align-items: flex-start;
   padding: 0;
-  margin:0;
+  margin: 0;
   z-index: 1;
-   max-width: 700px;
+  max-width: 700px;
 }
+
 .primary-heading {
   font-size: clamp(2rem, 5vw, 4rem);
   color: #4c4c4c;
   max-width: 600px;
   line-height: 1.2;
 }
+
 .primary-text {
   font-size: clamp(1rem, 3vw, 1.5rem);
   max-width: 500px;
   color: #6a6a6a;
   margin: 1.5rem 0;
 }
+
 .secondary-button {
   padding: 1rem 2.5rem;
   background-color: #8cc63f;
@@ -240,66 +217,110 @@ nav {
   align-items: center;
   justify-content: center;
 }
+
 .secondary-button svg {
   margin-left: 0.75rem;
   font-size: 1.5rem;
 }
+
 .secondary-button:hover {
   background-color: #000000;
 }
+
+/* CORRECCIÓN PRINCIPAL: Responsive para móviles */
 @media (max-width: 1024px) {
   .home-banner-container {
-    flex-direction: column-reverse;
+    flex-direction: column;
     text-align: center;
-    gap: 1.5rem;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    align-items: center;
   }
+  
   .home-text-section {
     align-items: center;
     text-align: center;
+    order: 2; /* El texto va después de la imagen */
+    z-index: 2;
   }
+  
   .home-image-section {
     max-width: 400px;
+    order: 1; /* La imagen va primero */
+    z-index: 1;
+    margin-bottom: 1rem;
+  }
+  
+  /* Asegurar que el fondo verde se mantenga */
+  .home-bannerImage-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
   }
 }
 
-/* Específico para el div 3 - orden normal en lugar de reverse */
+/* Para la tercera sección (último div) - mantener orden normal */
 .home-banner-container:last-child {
   flex-direction: column;
 }
 
 @media (max-width: 1024px) {
   .home-banner-container:last-child {
-    flex-direction: column-reverse;
+    flex-direction: column; /* Mantener orden normal, no reverse */
+  }
+  
+  .home-banner-container:last-child .home-image-section {
+    order: 1; /* Imagen arriba */
+  }
+  
+  .home-banner-container:last-child .home-text-section {
+    order: 2; /* Texto abajo */
   }
 }
 
-/* Ajusta los márgenes en pantallas pequeñas */
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 600px) {
+  .home-banner-container {
+    min-height: 450px;
+    padding: 1.5rem 1rem;
+  }
+  
+  .home-image-section {
+    max-width: 300px;
+  }
+  
+  .primary-heading {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+  }
+  
+  .primary-text {
+    font-size: 1rem;
+  }
+}
+
 @media(max-width: 400px) {
   .home-banner-container {
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem 1rem;
+    padding: 1rem;
+    min-height: 400px;
   }
-  .home-bannerImage-container {
-    position: static;
-    max-width: 100%;
-    margin-bottom: 2rem;
-  }
-  .home-text-section {
-    align-items: center;
-    text-align: center;
-  }
+  
   .primary-heading {
-    font-size: clamp(2rem, 6vw, 3rem);
+    font-size: 1.8rem;
   }
+  
   .primary-text {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
   }
+  
   .secondary-button {
     padding: 0.8rem 2rem;
     font-size: 1rem;
   }
 }
+
 /* Sección Nosotros - estilos similares a Home, manteniendo tus classes */
 .about-section-container {
   position: relative;
@@ -308,17 +329,25 @@ nav {
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  overflow: hidden; /* para evitar desbordamientos */
-  background-color: transparent; /* para que puedas poner el fondo en un div hijo */
+  overflow: hidden;
+  background-color: transparent;
+  min-height: 500px;
 }
+
 .about-background-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -2; /* detrás del contenido */
+  z-index: -2;
   overflow: hidden;
+}
+
+.about-background-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Fondo estático */
@@ -328,13 +357,13 @@ nav {
   left: 0;
   width: 100%;
   height: 100%;
-   z-index: -1; /* detrás del contenido */
+  z-index: -1;
 }
+
 .about-background-image-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
- /* opacidad suave para que no opaque el contenido */
 }
 
 /* Imagen ilustrativa */
@@ -342,14 +371,14 @@ nav {
   position: relative;
   flex: 0.9;
   max-width: 700px;
-  margin-left: 0 auto; /* esto empuja la imagen hacia la derecha */
-  margin-right: 2rem; /* ajusta según prefieras */
+  margin-left: 0 auto;
+  margin-right: 2rem;
   z-index: 2;
 }
+
 .about-section-image-container img {
   width: 100%;
   height: auto;
- 
 }
 
 /* Texto */
@@ -357,49 +386,44 @@ nav {
   position: relative;
   z-index: 3;
   max-width: 800px;
- 
- 
 }
-.primary-heading {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-bottom: 1rem;
-  color: #4c4c4c;
-}
-.primary-text {
-  font-size: 1rem;
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-  color: #6a6a6a;
-}
+
 .about-buttons-container {
   display: flex;
   gap: 1rem;
 }
 
-/* Responsividad para about section - igualar con home */
+/* Responsividad para about section - CORRECCIÓN APLICADA */
 @media(max-width: 1024px) {
   .about-section-container {
     flex-direction: column;
     padding: 2rem 1rem;
     text-align: center;
-    gap: 1.5rem;
+    gap: 1rem;
+    align-items: center;
   }
+  
   .about-section-image-container {
     margin-right: 0;
     margin-bottom: 0;
     max-width: 400px;
+    order: 1; /* Imagen primero */
+    z-index: 2;
   }
+  
   .about-section-text-container {
     align-items: center;
     text-align: center;
+    order: 2; /* Texto después */
+    z-index: 3;
   }
 }
-/*Planes*/
 
+/*Planes*/
 /* Contenedor principal */
 .work-section-wrapper {
   padding: 50px 20px;
-  background-color: #f5f5f5; /* color de fondo suave */
+  background-color: #f5f5f5;
   text-align: center;
 }
 
@@ -410,7 +434,7 @@ nav {
 
 .primary-subheading {
   font-size: 24px;
-  color: #8cc63f; /* color anaranjado */
+  color: #8cc63f;
   margin-bottom: 10px;
   font-weight: bold;
 }
@@ -433,7 +457,7 @@ nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px; /* espacio entre cards */
+  gap: 30px;
 }
 
 /* Cada tarjeta de plan */
@@ -485,13 +509,14 @@ nav {
   content: "•";
   position: absolute;
   left: 0;
-  color: #8cc63f; /* mismo color que el título del subheading */
+  color: #8cc63f;
 }
+
 .section-title-planes {
   font-size: 2.5rem;
   margin-bottom: 2rem;
   font-weight: bold;
-  color: #070707; /* ajusta si quieres otro color */
+  color: #070707;
 }
 
 /* Botón */
@@ -512,6 +537,7 @@ nav {
 .btn-consultar:hover {
   background-color: #00000011;
 }
+
 /*producto*/
 /* Estilo para la sección completa */
 .products-section {
@@ -527,7 +553,7 @@ nav {
   font-size: 2.5rem;
   margin-bottom: 2rem;
   font-weight: bold;
-  color: #fff; /* ajusta si quieres otro color */
+  color: #fff;
 }
 
 /* Grid para los productos */
@@ -541,7 +567,7 @@ nav {
 
 /* Tarjeta del producto */
 .product-card {
-  background: rgba(255, 255, 255, 0.9); /* fondo semi transparente para destacar */
+  background: rgba(255, 255, 255, 0.9);
   padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
@@ -564,6 +590,7 @@ nav {
   margin-bottom: 1rem;
   border-radius: 8px;
 }
+
 /* Título */
 .product-card h3 {
   margin-bottom: 1rem;
@@ -575,44 +602,41 @@ nav {
   font-size: 1rem;
   line-height: 1.4;
 }
-/* Estilo para las imágenes en las tarjetas */
+
 /* Clase para la imagen del producto */
 .product-image {
-  width: 100%;           /* Que ocupe todo el ancho del contenedor */
-  height: auto;          /* La altura ajusta automáticamente */
-  max-height: 300px;     /* Opcional: limita la altura máxima */
-  object-fit: cover;     /* Para que la imagen cubra todo sin deformarse */
-  display: block;        /* Para eliminar espacios en línea */
-  border-radius: 8px;    /* Opcional: para mantener la estética */
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
 }
+
 .section-title-marcas {
   font-size: 2.5rem;
   margin-bottom: 2rem;
   font-weight: bold;
-  color: #070707; /* ajusta si quieres otro color */
+  color: #070707;
 }
-/* Reset y tipografía global ya los tienes, no hace falta repetirlo */
 
-/* Estilo para el contenedor del formulario */
 /* Para los títulos y párrafos */
 .section-title-formulario {
   font-size: 2.5rem;
-  margin-bottom: 2rem; /* mayor separación */
+  margin-bottom: 2rem;
   font-weight: bold;
   color: #070707;
   text-align: center;
 }
 
-
 .form-container {
   max-width: 500px;
   margin: 2rem auto;
   padding: 2rem;
-  background-color: #ffffff; /* Fondo blanco */
+  background-color: #ffffff;
   border-radius: 15px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   font-family: "Reem Kufi", sans-serif;
-   
 }
 
 /* Título del formulario */
@@ -621,8 +645,6 @@ nav {
   margin-bottom: 1.5rem;
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   color: #4c4c4c;
-    
-   
 }
 
 /* Inputs y textarea */
@@ -640,7 +662,7 @@ nav {
 
 .form-container input:focus,
 .form-container textarea:focus {
-  border-color: #8cc63f; /* Verde suave */
+  border-color: #8cc63f;
   box-shadow: 0 0 8px rgba(140, 198, 63, 0.3);
   outline: none;
 }
@@ -649,7 +671,7 @@ nav {
 .form-container button {
   width: 100%;
   padding: 14px;
-  background-color: #8cc63f; /* Verde */
+  background-color: #8cc63f;
   color: #fff;
   border: none;
   border-radius: 25px;
@@ -674,10 +696,10 @@ nav {
 
 /* Opcional: efecto en el mensaje */
 .mensaje.success {
-  color: #4CAF50; /* Verde */
+  color: #4CAF50;
 }
 .mensaje.error {
-  color: #f44336; /* Rojo */
+  color: #f44336;
 }
 .success {
   color: green;
@@ -694,7 +716,7 @@ nav {
   display: flex;
   justify-content: center;
   width: 100%;
-  min-height: 200px; /* o más, según sea necesario */
+  min-height: 200px;
   box-sizing: border-box;
 }
 
@@ -718,7 +740,7 @@ nav {
 
 /* Logo */
 .footer-logo {
-  width: 150px; /* tamaño ajustable */
+  width: 150px;
   height: auto;
 }
 
@@ -726,7 +748,7 @@ nav {
 .footer-top {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* menos espacio entre columnas */
+  gap: 20px;
   flex: 1;
   justify-content: space-between;
   width: 100%;
@@ -757,7 +779,7 @@ nav {
   min-width: 150px;
   display: flex;
   flex-direction: column;
-  width: 100%; /* asegura que ocupe todo el ancho disponible */
+  width: 100%;
 }
 
 /* Título */
@@ -770,7 +792,7 @@ nav {
 .newsletter-input {
   display: flex;
   gap: 10px;
-  width: 100%; /* aseguramos que ocupe todo el ancho del contenedor */
+  width: 100%;
 }
 
 /* Input */
@@ -779,8 +801,8 @@ nav {
   padding: 8px;
   border-radius: 4px;
   border: none;
-  min-width: 0; /* para evitar que el input tenga un tamaño mínimo que cause desbordamiento */
-  box-sizing: border-box; /* para que el padding no aumente el tamaño total */
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 /* Botón */
@@ -791,7 +813,7 @@ nav {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  flex-shrink: 0; /* evita que el botón se reduzca más allá de su tamaño */
+  flex-shrink: 0;
 }
 
 /* Opcional: ajusta tamaño en pantallas pequeñas */
@@ -800,9 +822,10 @@ nav {
     flex-direction: column;
   }
   .newsletter-input button {
-    width: 100%; /* que el botón ocupe todo el ancho en pantallas pequeñas */
+    width: 100%;
   }
 }
+
 /* Redes sociales */
 .footer-socials {
   display: flex;
