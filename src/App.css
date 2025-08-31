@@ -168,25 +168,13 @@ nav {
 /* En pantallas muy pequeñas, mover la imagen de fondo */
 @media (max-width: 600px) {
   .home-bannerImage-container {
-    position: static;
-    max-width: 100%;
-    margin-bottom: 1rem;
+    position: absolute;
     top: auto;
     right: auto;
-    z-index: -1;
-    order: 3; /* Esto lo pone al final en el orden flex */
-  }
-  
-  .home-banner-container {
-    flex-direction: column;
-  }
-  
-  .home-text-section {
-    order: 1; /* Texto primero */
-  }
-  
-  .home-image-section {
-    order: 2; /* Imagen del contenido segundo */
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+    z-index: -2;
   }
 }
 
