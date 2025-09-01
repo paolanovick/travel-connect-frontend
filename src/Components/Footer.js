@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   FaFacebookF,
   FaTwitter,
@@ -11,64 +11,122 @@ const Footer = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState("success"); // "success" | "error"
 
-  // Tu webhook nuevo
-  const WEBHOOK_URL = "http://167.172.31.249:5678/webhook/footer-newsletter";
+  const timeoutRef = useRef(null);
+  const abortRef = useRef(null);
+
+  // Cambialo aquí si quieres usar un proxy (recomendado si tu frontend está en https)
+  const WEBHOOK_URL = "/api/footer-newsletter";
+
+
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (abortRef.current) abortRef.current.abort();
+    };
+  }, []);
+
+  const clearMessageLater = (ms = 5000) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => setMessage(""), ms);
+  };
 
   const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
 
-    // Validar email básico
-    if (!email || !email.includes("@")) {
+    if (!email || !emailRegex.test(email)) {
+      setMessageType("error");
       setMessage("Por favor ingresa un email válido");
-      setTimeout(() => setMessage(""), 3000);
+      clearMessageLater(3000);
       return;
     }
 
     setIsLoading(true);
     setMessage("");
+    setMessageType("success");
+
+    // Timeout / AbortController para evitar requests colgados
+    const controller = new AbortController();
+    abortRef.current = controller;
+    const abortTimer = setTimeout(() => controller.abort(), 10000); // 10s timeout
 
     try {
       const response = await fetch(WEBHOOK_URL, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email: email,
+          email: email.trim(),
           timestamp: new Date().toISOString(),
           source: "footer_newsletter",
           page: window.location.pathname,
         }),
+        signal: controller.signal,
       });
 
-      if (response.ok) {
-        setMessage("¡Gracias! Te has suscrito correctamente.");
-        setEmail(""); // Limpiar el input
-      } else {
-        setMessage("Error al suscribirse. Intenta nuevamente.");
+      clearTimeout(abortTimer);
+
+      if (!response.ok) {
+        // intentar leer error del body si viene JSON
+        let errorText = `Error HTTP ${response.status}`;
+        try {
+          const errJson = await response.json();
+          errorText = errJson.message || JSON.stringify(errJson);
+        } catch (err) {
+          // no JSON, dejar errorText por defecto
+        }
+        setMessageType("error");
+        setMessage(`Error al suscribirse: ${errorText}`);
+        clearMessageLater();
+        return;
       }
+
+      // si devuelve JSON, lo usamos; si no, mostramos un mensaje por defecto
+      let data = null;
+      try {
+        data = await response.json();
+      } catch {
+        data = null;
+      }
+
+      const successMsg =
+        (data &&
+          (data.message ||
+            (data.success && "¡Gracias! Te has suscrito correctamente."))) ||
+        "¡Gracias! Te has suscrito correctamente.";
+
+      setMessageType("success");
+      setMessage(successMsg);
+      setEmail("");
+      clearMessageLater(5000);
     } catch (error) {
-      console.error("Error:", error);
-      setMessage(
-        "Error de conexión. Verifica tu conexión e intenta nuevamente."
-      );
+      if (error.name === "AbortError") {
+        setMessageType("error");
+        setMessage("La solicitud tardó demasiado. Intenta nuevamente.");
+      } else {
+        console.error("Newsletter error:", error);
+        setMessageType("error");
+        setMessage(
+          "Hubo un problema al enviar tu suscripción. Intenta nuevamente."
+        );
+      }
+      clearMessageLater();
     } finally {
       setIsLoading(false);
-      // Limpiar mensaje después de 5 segundos
-      setTimeout(() => setMessage(""), 5000);
     }
   };
 
+  const isEmailValid = emailRegex.test(email);
+
   return (
     <div className="footer">
-      {/* Contenedor principal centrado y con máximo ancho */}
       <div className="footer-container">
-        {/* Logo y contenido principal */}
         <div className="footer-header">
           <img src={Logo} alt="Logo" className="footer-logo" />
           <div className="footer-top">
-            {/* Columnas con enlaces */}
             <div className="footer-column">
               <h3>Secciones</h3>
               <p>Inicio</p>
@@ -82,16 +140,16 @@ const Footer = () => {
               <p>Contacto Comercial</p>
               <p>Política de Privacidad</p>
               <p>Legales</p>
-              <p>Términos & Condiciones</p>
+              <p>Términos &amp; Condiciones</p>
             </div>
-            {/* Sección de Newsletter CON FUNCIONALIDAD */}
+
             <div className="footer-newsletter">
-              <h3>Subscribe a nuestro Newsletter</h3>
+              <h3>Suscribite a nuestro Newsletter</h3>
               <form onSubmit={handleNewsletterSubmit}>
                 <div className="newsletter-input">
                   <input
                     type="email"
-                    placeholder="Enter your email"
+                    placeholder="Ingresa tu email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     disabled={isLoading}
@@ -99,21 +157,22 @@ const Footer = () => {
                   />
                   <button
                     type="submit"
-                    disabled={isLoading || !email}
+                    disabled={isLoading || !isEmailValid}
                     style={{
                       opacity: isLoading ? 0.6 : 1,
                       cursor: isLoading ? "not-allowed" : "pointer",
                     }}
                   >
-                    {isLoading ? "..." : "Subscribe"}
+                    {isLoading ? "Enviando..." : "Suscribirse"}
                   </button>
                 </div>
-                {/* Mensaje de feedback */}
+
                 {message && (
                   <div
                     className={`newsletter-message ${
-                      message.includes("Gracias") ? "success" : "error"
+                      messageType === "success" ? "success" : "error"
                     }`}
+                    role="status"
                   >
                     {message}
                   </div>
@@ -123,7 +182,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Redes sociales */}
         <div className="footer-socials">
           <button aria-label="Facebook">
             <FaFacebookF />
@@ -147,7 +205,6 @@ const Footer = () => {
           </button>
         </div>
 
-        {/* Pie de página */}
         <div className="footer-bottom">
           © 2025 Travel Connect. Todos los derechos reservados.
         </div>
