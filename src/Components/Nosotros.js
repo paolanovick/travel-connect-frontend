@@ -40,11 +40,8 @@ const Nosotros = () => {
         </div>
       </div>
 
-      {/* Segunda sección - sin background, imagen a la izquierda */}
+      {/* Segunda sección - ORDEN CORREGIDO: texto primero, imagen después */}
       <div className="home-banner-container second-section no-background">
-        <div className="home-image-section">
-          <img src={BannerImage} alt="Imagen ilustrativa de viajes" />
-        </div>
         <div className="home-text-section">
           <h1 className="primary-heading">
             Automatización, CRM y Chatbot Omnicanal
@@ -64,6 +61,9 @@ const Nosotros = () => {
           <button className="secondary-button">
             Descubre Más <FiArrowRight />
           </button>
+        </div>
+        <div className="home-image-section">
+          <img src={BannerImage} alt="Imagen ilustrativa de viajes" />
         </div>
       </div>
     </div>
