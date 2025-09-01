@@ -201,6 +201,30 @@ nav {
   z-index: 1;
   max-width: 700px;
 }
+/* RESPONSIVE: Hacer que ambas secciones se comporten igual */
+@media (max-width: 1024px) {
+  .home-banner-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    align-items: center;
+  }
+  
+  .home-text-section {
+    align-items: center;
+    text-align: center;
+    order: 2; /* El texto va después de la imagen */
+    z-index: 2;
+  }
+  
+  .home-image-section {
+    max-width: 400px;
+    order: 1; /* La imagen va primero */
+    z-index: 1;
+    margin-bottom: 1rem;
+  }
+}
 
 /* Estilos de texto y botones (mantener los originales) */
 .primary-heading {
