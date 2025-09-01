@@ -289,10 +289,8 @@ nav {
   display: none;
 }
 
-/* Para la segunda sección - mantener orden normal */
-.home-banner-container.second-section {
-  flex-direction: row; /* Cambiar a row en lugar de column */
-}
+
+
 
 @media (max-width: 1024px) {
   .home-banner-container.second-section {
