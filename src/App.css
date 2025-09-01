@@ -202,27 +202,37 @@ nav {
   max-width: 700px;
 }
 /* RESPONSIVE: Hacer que ambas secciones se comporten igual */
+/* FORZAR responsive en ambas secciones con !important */
 @media (max-width: 1024px) {
-  .home-banner-container {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-    padding: 2rem 1rem;
-    align-items: center;
+  .home-banner-container,
+  .home-banner-container.first-section,
+  .home-banner-container.second-section,
+  .home-banner-container.second-section.no-background {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1rem !important;
+    padding: 2rem 1rem !important;
+    align-items: center !important;
   }
   
-  .home-text-section {
-    align-items: center;
-    text-align: center;
-    order: 2; /* El texto va después de la imagen */
-    z-index: 2;
+  .home-banner-container .home-text-section,
+  .home-banner-container.first-section .home-text-section,
+  .home-banner-container.second-section .home-text-section,
+  .home-banner-container.second-section.no-background .home-text-section {
+    align-items: center !important;
+    text-align: center !important;
+    order: 2 !important;
+    z-index: 2 !important;
   }
   
-  .home-image-section {
-    max-width: 400px;
-    order: 1; /* La imagen va primero */
-    z-index: 1;
-    margin-bottom: 1rem;
+  .home-banner-container .home-image-section,
+  .home-banner-container.first-section .home-image-section,
+  .home-banner-container.second-section .home-image-section,
+  .home-banner-container.second-section.no-background .home-image-section {
+    max-width: 400px !important;
+    order: 1 !important;
+    z-index: 1 !important;
+    margin-bottom: 1rem !important;
   }
 }
 
