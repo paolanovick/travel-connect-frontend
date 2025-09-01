@@ -323,8 +323,7 @@ nav {
   
   .primary-text {
     font-size: 1rem;
-    align-items: center;
-  }
+    
 }
 
 @media(max-width: 400px) {
@@ -338,7 +337,7 @@ nav {
   
   .primary-text {
     font-size: 0.9rem;
-    align-items: center;
+   
   }
   
   .secondary-button {
