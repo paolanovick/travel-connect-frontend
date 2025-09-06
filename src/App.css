@@ -924,3 +924,115 @@ nav {
     padding: 8px 12px;
   }
 }
+/* ==============================
+   ChatBotModal
+   ============================== */
+
+.MuiDialog-root .MuiPaper-root {
+  border-radius: 18px !important;
+  box-shadow: 0 6px 24px rgba(140, 198, 63, 0.12), 0 1.5px 5px rgba(0,0,0,0.08);
+  font-family: "Reem Kufi", sans-serif !important;
+}
+
+.MuiDialogTitle-root {
+  font-family: "Reem Kufi", sans-serif !important;
+  font-size: 1.45rem !important;
+  font-weight: 700;
+  color: #8cc63f;
+  text-align: center;
+  letter-spacing: 1px;
+  background: #f5f5f5;
+  border-radius: 16px 16px 0 0;
+}
+
+.MuiDialogContent-root {
+  background-color: #f6f6f6;
+  min-height: 230px;
+  padding-top: 20px !important;
+  padding-bottom: 10px !important;
+}
+
+.bot-message, .user-message {
+  display: inline-block;
+  max-width: 80%;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 18px;
+  font-size: 1.08rem;
+  font-family: "Reem Kufi", sans-serif;
+  word-break: break-word;
+  box-shadow: 0 1px 6px rgba(140,198,63,0.07);
+  transition: background 0.2s;
+}
+
+.bot-message {
+  background-color: #eaf7e1;
+  color: #4c4c4c;
+  border-bottom-left-radius: 2px;
+  text-align: left;
+}
+
+.user-message {
+  background-color: #fff;
+  color: #8cc63f;
+  border-bottom-right-radius: 2px;
+  text-align: right;
+  margin-left: auto;
+  font-weight: 600;
+}
+
+.chatbot-messages-box {
+  min-height: 150px;
+  max-height: 250px;
+  overflow-y: auto;
+  margin-bottom: 12px;
+  padding-right: 8px;
+  padding-left: 2px;
+}
+
+.chatbot-input-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.chatbot-input-row input[type="text"], 
+.chatbot-input-row .MuiInputBase-root {
+  font-family: "Reem Kufi", sans-serif !important;
+  border-radius: 12px !important;
+  font-size: 1.03rem !important;
+  background: #fff !important;
+  border: 1px solid #e0e0e0 !important;
+}
+
+.chatbot-input-row button {
+  background-color: #8cc63f !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  font-family: "Reem Kufi", sans-serif !important;
+  padding: 7px 16px !important;
+  transition: background 0.2s;
+  box-shadow: 0 1px 6px rgba(140,198,63,0.09);
+}
+
+.chatbot-input-row button:hover {
+  background-color: #70a02f !important;
+}
+
+@media (max-width: 600px) {
+  .MuiDialog-root .MuiPaper-root {
+    margin: 12px !important;
+    width: 95vw !important;
+  }
+  .chatbot-messages-box {
+    max-height: 160px;
+  }
+}
+
+/* Loader centrado */
+.chatbot-loader {
+  display: block;
+  margin: 10px auto;
+}

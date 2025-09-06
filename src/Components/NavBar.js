@@ -12,17 +12,19 @@ import {
   ListItemText,
   Button,
 } from "@mui/material";
-
 import WorkIcon from "@mui/icons-material/Work";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
+import ChatBotModal from "./ChatBotModal";
 
 const NavBar = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [openChat, setOpenChat] = useState(false);
 
+  // Menu options without action (for drawer)
   const menuOptions = [
     { text: "Inicio", icon: <HomeIcon />, link: "/" },
     { text: "Nosotros", icon: <InfoIcon />, link: "/nosotros" },
@@ -46,6 +48,15 @@ const NavBar = () => {
             <a key={item.text} href={item.link} className="nav-link">
               <BsCart2 className="navbar-cart-icon" />
             </a>
+          ) : item.text === "Contacto" ? (
+            <span
+              key={item.text}
+              className="nav-link"
+              style={{ cursor: "pointer" }}
+              onClick={() => setOpenChat(true)}
+            >
+              {item.text}
+            </span>
           ) : (
             <a key={item.text} href={item.link} className="nav-link">
               {item.text}
@@ -69,14 +80,23 @@ const NavBar = () => {
           onKeyDown={() => setOpenMenu(false)}
         >
           <List>
-            {menuOptions.map((item) => (
-              <ListItem key={item.text} disablePadding>
-                <ListItemButton component="a" href={item.link}>
-                  <ListItemIcon>{item.icon}</ListItemIcon>
-                  <ListItemText primary={item.text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
+            {menuOptions.map((item) =>
+              item.text === "Contacto" ? (
+                <ListItem key={item.text} disablePadding>
+                  <ListItemButton onClick={() => setOpenChat(true)}>
+                    <ListItemIcon>{item.icon}</ListItemIcon>
+                    <ListItemText primary={item.text} />
+                  </ListItemButton>
+                </ListItem>
+              ) : (
+                <ListItem key={item.text} disablePadding>
+                  <ListItemButton component="a" href={item.link}>
+                    <ListItemIcon>{item.icon}</ListItemIcon>
+                    <ListItemText primary={item.text} />
+                  </ListItemButton>
+                </ListItem>
+              )
+            )}
           </List>
           <Button
             variant="contained"
@@ -92,6 +112,9 @@ const NavBar = () => {
           </Button>
         </Box>
       </Drawer>
+
+      {/* Modal del ChatBot */}
+      <ChatBotModal open={openChat} handleClose={() => setOpenChat(false)} />
     </nav>
   );
 };
