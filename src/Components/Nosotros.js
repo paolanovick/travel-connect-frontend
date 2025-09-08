@@ -4,7 +4,7 @@ import BannerImage from "../Assets/home-banner-image.png";
 import { FiArrowRight } from "react-icons/fi";
 import AboutBannerImage from "../Assets/about-banner-image.png";
 
-const Nosotros = () => {
+const Nosotros = ({ onOpenChatbot }) => {
   return (
     <section id="nosotros" className="nosotros-wrapper">
       {/* Primera sección - originalmente de Home */}
@@ -30,7 +30,7 @@ const Nosotros = () => {
             artificial que responde de forma automática tanto desde la web como
             desde redes sociales.
           </p>
-          <button className="secondary-button">
+          <button className="secondary-button" onClick={onOpenChatbot}>
             Descubre Más <FiArrowRight />
           </button>
         </div>
@@ -65,7 +65,7 @@ const Nosotros = () => {
             transformación completa del modelo de negocio para el ecosistema
             digital actual.
           </p>
-          <button className="secondary-button">
+          <button className="secondary-button" onClick={onOpenChatbot}>
             Descubre Más <FiArrowRight />
           </button>
         </div>
