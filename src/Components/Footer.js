@@ -180,12 +180,6 @@ const Footer = () => {
         </div>
 
         <div className="footer-socials">
-          <button aria-label="Facebook">
-            <FaFacebookF />
-          </button>
-          <button aria-label="Twitter">
-            <FaTwitter />
-          </button>
           <button
             aria-label="Instagram"
             onClick={() =>
@@ -197,8 +191,24 @@ const Footer = () => {
           >
             <FaInstagram />
           </button>
-          <button aria-label="LinkedIn">
+          <button
+            aria-label="LinkedIn"
+            onClick={() =>
+              window.open(
+                "https://www.linkedin.com/company/travelconnectarg/posts/?feedView=all",
+                "_blank"
+              )
+            }
+          >
             <FaLinkedin />
+          </button>
+          <button
+            aria-label="Sitio web"
+            onClick={() =>
+              window.open("https://www.travelconnect.com.ar", "_blank")
+            }
+          >
+            <FaGlobe />
           </button>
         </div>
 
