@@ -4,6 +4,7 @@ import BannerImage from "../Assets/home-banner-image.png";
 import AboutBackground from "../Assets/about-background.png";
 import AboutBackgroundImage from "../Assets/about-background-image.png";
 import { FiArrowRight } from "react-icons/fi";
+import AboutBannerImage from "../Assets/about-banner-image.png";
 
 const Nosotros = () => {
   return (
@@ -41,9 +42,10 @@ const Nosotros = () => {
       </div>
 
       {/* Segunda sección - sin background, imagen a la izquierda */}
+      {/* Segunda sección - sin background, imagen a la izquierda */}
       <div className="home-banner-container second-section no-background">
         <div className="home-image-section">
-          <img src={BannerImage} alt="Imagen ilustrativa de viajes" />
+          <img src={AboutBannerImage} alt="Automatización y CRM" />
         </div>
         <div className="home-text-section">
           <h1 className="primary-heading">
