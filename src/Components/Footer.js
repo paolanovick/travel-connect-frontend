@@ -1,10 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaInstagram,
-  FaLinkedin,
-} from "react-icons/fa";
+import { FaInstagram, FaLinkedin, FaGlobe } from "react-icons/fa";
 import Logo from "../Assets/Logo.png";
 
 const Footer = () => {
