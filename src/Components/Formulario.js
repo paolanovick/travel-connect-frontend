@@ -40,7 +40,7 @@ function Formulario() {
  };
 
   return (
-    <div className="work-section-wrapper">
+     <section id="formulario" className="work-section-wrapper">
       <div className="work-section-top">
         <h2 className="section-title-formulario" style={{ marginTop: "0px" }}>
           Formulario de contacto
@@ -93,7 +93,7 @@ function Formulario() {
           </p>
         )}
       </div>
-    </div>
+    </section>
   );
 }
 
