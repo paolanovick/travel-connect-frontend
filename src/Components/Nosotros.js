@@ -4,7 +4,7 @@ import BannerImage from "../Assets/home-banner-image.png";
 import AboutBackground from "../Assets/about-background.png";
 import AboutBackgroundImage from "../Assets/about-background-image.png";
 import { FiArrowRight } from "react-icons/fi";
-import AboutBannerImage from "../Assets/about-banner-image.png";
+import AboutBannerImage from "../Assets/about-banner-image.jpg";
 
 const Nosotros = () => {
   return (
