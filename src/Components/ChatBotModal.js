@@ -38,7 +38,10 @@ const ChatBotModal = ({ open, handleClose }) => {
         ...prev,
         {
           from: "bot",
-          text: data.reply || "¡Ups! No pude responder, intenta de nuevo.",
+          text:
+            data.reply ||
+            data.respuesta ||
+            "¡Ups! No pude responder, intenta de nuevo.",
         },
       ]);
     } catch {
