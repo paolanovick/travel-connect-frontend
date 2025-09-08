@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Logo from "../Assets/Logo.png"; // Asegúrate que la ruta sea correcta
-import { BsCart2 } from "react-icons/bs";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import {
   Box,
@@ -17,22 +16,19 @@ import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
-import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import ChatBotModal from "./ChatBotModal";
 
 const NavBar = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [openChat, setOpenChat] = useState(false);
 
-  // Menu options without action (for drawer)
-  const menuOptions = [
-    { text: "Inicio", icon: <HomeIcon />, link: "/" },
-    { text: "Nosotros", icon: <InfoIcon />, link: "/nosotros" },
-    { text: "Productos", icon: <CommentRoundedIcon />, link: "/productos" },
-    { text: "Planes", icon: <WorkIcon />, link: "/Planes" },
-    { text: "Contacto", icon: <PhoneRoundedIcon />, link: "/contacto" },
-    { text: "Carrito", icon: <ShoppingCartRoundedIcon />, link: "/carrito" },
-  ];
+ const menuOptions = [
+   { text: "Inicio", icon: <HomeIcon />, link: "#inicio" },
+   { text: "Nosotros", icon: <InfoIcon />, link: "#nosotros" },
+   { text: "Productos", icon: <CommentRoundedIcon />, link: "#productos" },
+   { text: "Planes", icon: <WorkIcon />, link: "#planes" },
+   { text: "Contacto", icon: <PhoneRoundedIcon />, link: "#contacto" },
+ ];
 
   return (
     <nav className="navbar">
@@ -44,11 +40,7 @@ const NavBar = () => {
       {/* Links de escritorio */}
       <div className="navBar-links-container">
         {menuOptions.map((item) =>
-          item.text === "Carrito" ? (
-            <a key={item.text} href={item.link} className="nav-link">
-              <BsCart2 className="navbar-cart-icon" />
-            </a>
-          ) : item.text === "Contacto" ? (
+          item.text === "Contacto" ? (
             <span
               key={item.text}
               className="nav-link"

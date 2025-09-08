@@ -1035,4 +1035,8 @@ nav {
 .chatbot-loader {
   display: block;
   margin: 10px auto;
+
+}
+html {
+  scroll-behavior: smooth;
 }

@@ -25,7 +25,7 @@ const ChatBotModal = ({ open, handleClose }) => {
     try {
       // Cambia la URL por la de tu webhook de n8n
    const resp = await fetch(
-     "https://9d6709dbc3de.ngrok-free.app/webhook/chat-ia",
+     "https://9477edce4411.ngrok-free.app/webhook/chat-ia",
      {
        method: "POST",
        headers: { "Content-Type": "application/json" },
