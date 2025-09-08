@@ -48,12 +48,11 @@ const Planes = () => {
   // Función para abrir WhatsApp con mensaje personalizado
   const abrirWhatsApp = async (planTitle) => {
     try {
-      // 1. Enviar datos a n8n con el formato que espera tu Switch
       await fetch("http://167.172.31.249:5678/webhook-test/form", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          tipo: "consulta_plan", // Coincide con tu configuración del Switch
+          tipo: "consulta_plan",
           plan: planTitle,
           numero: numeroWhatsApp,
           timestamp: new Date().toISOString(),
@@ -66,7 +65,6 @@ const Planes = () => {
       console.log("Error enviando datos a n8n:", error);
     }
 
-    // 2. Abrir WhatsApp como siempre (mantén tu lógica actual)
     const mensaje = `¡Hola! 👋
 
 Me interesa conocer más sobre el plan *${planTitle}*.
@@ -83,8 +81,9 @@ Me interesa conocer más sobre el plan *${planTitle}*.
     const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`;
     window.open(urlWhatsApp, "_blank");
   };
+
   return (
-    <div className="work-section-wrapper">
+    <section id="planes" className="work-section-wrapper">
       <div className="work-section-top">
         <h2 className="section-title-planes">Nuestros Planes</h2>
         <p className="primary-text">
@@ -112,7 +111,7 @@ Me interesa conocer más sobre el plan *${planTitle}*.
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

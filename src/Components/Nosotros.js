@@ -7,7 +7,7 @@ import { FiArrowRight } from "react-icons/fi";
 
 const Nosotros = () => {
   return (
-    <div className="nosotros-wrapper">
+    <section id="nosotros" className="nosotros-wrapper">
       {/* Primera sección - originalmente de Home */}
       <div className="home-banner-container first-section">
         <div className="home-bannerImage-container">
@@ -66,7 +66,7 @@ const Nosotros = () => {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -1,13 +1,10 @@
 import React from "react";
 import BannerBackground from "../Assets/home-banner-background.png"; // tu fondo
-/*import BannerImage from "../Assets/home-banner-image1-01.png"; */// tu banner principal
+// import BannerImage from "../Assets/home-banner-image1-01.png"; // tu banner principal
 import crmImage from "../Assets/crm.png";
 import webImage from "../Assets/web.png";
 import chatImage from "../Assets/chat.png";
 import backofficeImage from "../Assets/bo.png";
-
-
-
 
 const ProductsSection = () => {
   const products = [
@@ -34,13 +31,13 @@ const ProductsSection = () => {
   ];
 
   return (
-    <div
+    <section
+      id="productos"
       className="products-section"
       style={{
         backgroundImage: `url(${BannerBackground})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-
         color: "#fff",
       }}
     >
@@ -58,7 +55,7 @@ const ProductsSection = () => {
         ))}
       </div>
       {/* Puedes agregar una sección con la imagen principal similar a tu banner */}
-    </div>
+    </section>
   );
 };
 

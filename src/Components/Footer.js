@@ -11,16 +11,12 @@ const Footer = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [messageType, setMessageType] = useState("success"); // "success" | "error"
+  const [messageType, setMessageType] = useState("success");
 
   const timeoutRef = useRef(null);
   const abortRef = useRef(null);
 
-  // Cambialo aquí si quieres usar un proxy (recomendado si tu frontend está en https)
   const WEBHOOK_URL = "/api/footer-newsletter";
-
-
-
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   useEffect(() => {
@@ -49,10 +45,9 @@ const Footer = () => {
     setMessage("");
     setMessageType("success");
 
-    // Timeout / AbortController para evitar requests colgados
     const controller = new AbortController();
     abortRef.current = controller;
-    const abortTimer = setTimeout(() => controller.abort(), 10000); // 10s timeout
+    const abortTimer = setTimeout(() => controller.abort(), 10000);
 
     try {
       const response = await fetch(WEBHOOK_URL, {
@@ -70,21 +65,17 @@ const Footer = () => {
       clearTimeout(abortTimer);
 
       if (!response.ok) {
-        // intentar leer error del body si viene JSON
         let errorText = `Error HTTP ${response.status}`;
         try {
           const errJson = await response.json();
           errorText = errJson.message || JSON.stringify(errJson);
-        } catch (err) {
-          // no JSON, dejar errorText por defecto
-        }
+        } catch (err) {}
         setMessageType("error");
         setMessage(`Error al suscribirse: ${errorText}`);
         clearMessageLater();
         return;
       }
 
-      // si devuelve JSON, lo usamos; si no, mostramos un mensaje por defecto
       let data = null;
       try {
         data = await response.json();
@@ -129,18 +120,24 @@ const Footer = () => {
           <div className="footer-top">
             <div className="footer-column">
               <h3>Secciones</h3>
-              <p>Inicio</p>
-              <p>Nosotros</p>
-              <p>Productos</p>
-              <p>Planes</p>
-              <p>Contacto</p>
+              <a href="#inicio">Inicio</a>
+              <a href="#nosotros">Nosotros</a>
+              <a href="#productos">Productos</a>
+              <a href="#planes">Planes</a>
+              <a href="#contacto">Contacto</a>
             </div>
             <div className="footer-column">
               <h3>Contáctenos</h3>
-              <p>Contacto Comercial</p>
-              <p>Política de Privacidad</p>
-              <p>Legales</p>
-              <p>Términos &amp; Condiciones</p>
+              <a href="#contacto">Contacto Comercial</a>
+              <a href="/privacidad" target="_blank" rel="noopener noreferrer">
+                Política de Privacidad
+              </a>
+              <a href="/legales" target="_blank" rel="noopener noreferrer">
+                Legales
+              </a>
+              <a href="/terminos" target="_blank" rel="noopener noreferrer">
+                Términos &amp; Condiciones
+              </a>
             </div>
 
             <div className="footer-newsletter">

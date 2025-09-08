@@ -852,6 +852,28 @@ nav {
   font-size: 0.9rem;
   color: #fff;
 }
+.footer-column a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.footer-column a:hover {
+  color: #fe9e0d; /* Cambia este color por el de tu marca si quieres */
+}
+.footer-column a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.footer-column a:hover {
+  color: #fe9e0d; /* O el color de tu marca */
+}
 /* ===============================================
    NEWSLETTER MESSAGES - AGREGAR AL FINAL DEL CSS
    =============================================== */
