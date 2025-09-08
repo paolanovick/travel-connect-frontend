@@ -30,7 +30,7 @@ function App() {
       <Formulario />
       <Footer />
       {/* 4. Mostrar el chatbot si showChatbot es true */}
-      <ChatBotModal open={showChatbot} onClose={handleCloseChatbot} />
+      <ChatBotModal open={showChatbot} handleClose={handleCloseChatbot} />
     </div>
   );
 }
