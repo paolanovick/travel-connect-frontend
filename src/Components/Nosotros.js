@@ -2,8 +2,7 @@ import React from "react";
 import BannerBackground from "../Assets/home-banner-background.png";
 import BannerImage from "../Assets/home-banner-image.png";
 import { FiArrowRight } from "react-icons/fi";
-import AboutBackground from "../Assets/about-banner-image.jpg";
-import AboutBannerImage from "../Assets/about-banner-image.jpg";
+import AboutBannerImage from "../Assets/about-banner-image.png";
 
 const Nosotros = () => {
   return (
@@ -47,15 +46,7 @@ const Nosotros = () => {
           <img
             src={AboutBannerImage}
             alt="Automatización y CRM"
-            style={{
-              width: "260px",
-              height: "260px",
-              borderRadius: "50%",
-              objectFit: "cover",
-              display: "block",
-              margin: "0 auto",
-              boxShadow: "0 2px 12px rgba(0,0,0,0.05)", // Opcional: sombra suave
-            }}
+            className="img-round"
           />
         </div>
         <div className="home-text-section">
