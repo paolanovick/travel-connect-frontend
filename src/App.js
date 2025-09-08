@@ -8,7 +8,7 @@ import Productos from "./Components/Productos";
 import Marcas from "./Components/Marcas";
 import Formulario from "./Components/Formulario";
 import Footer from "./Components/Footer";
-import ChatbotIA from "./Components/ChatbotIA";
+import ChatBotModal from "./Components/ChatBotModal";
 
 function App() {
   // 1. Estado para mostrar/ocultar el chatbot
@@ -30,7 +30,7 @@ function App() {
       <Formulario />
       <Footer />
       {/* 4. Mostrar el chatbot si showChatbot es true */}
-      <ChatbotIA open={showChatbot} onClose={handleCloseChatbot} />
+      <ChatBotModal open={showChatbot} onClose={handleCloseChatbot} />
     </div>
   );
 }
