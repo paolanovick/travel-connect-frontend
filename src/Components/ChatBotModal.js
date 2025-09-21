@@ -1,14 +1,16 @@
-// src/components/ChatBotModal.js
 import React, { useState } from "react";
+import deepai from "deepai";
 import {
   Dialog,
   DialogTitle,
   DialogContent,
   TextField,
   Button,
-  Box,
   CircularProgress,
 } from "@mui/material";
+
+// Configuramos la API Key
+deepai.setApiKey("84f93bd6-3c04-42f3-9b0e-f1edd718fd77");
 
 const ChatBotModal = ({ open, handleClose }) => {
   const [messages, setMessages] = useState([
@@ -19,40 +21,37 @@ const ChatBotModal = ({ open, handleClose }) => {
 
   const handleSend = async () => {
     if (!input.trim()) return;
+
     setMessages((prev) => [...prev, { from: "user", text: input }]);
     setLoading(true);
 
     try {
-      // Cambia la URL por la de tu webhook de n8n
-   const resp = await fetch(
-     "https://f9f55d6d016d.ngrok-free.app/webhook/chat-ia",
-     {
-       method: "POST",
-       headers: { "Content-Type": "application/json" },
-       body: JSON.stringify({ message: input }),
-     }
-   );
+      // Llamamos a DeepAI para generar imagen a partir del texto
+      const response = await deepai.callStandardApi("text2img", {
+        text: input,
+      });
 
-      const data = await resp.json();
+      const imageUrl = response.output_url;
+
       setMessages((prev) => [
         ...prev,
         {
           from: "bot",
-          text:
-            data.reply ||
-            data.respuesta ||
-            "¡Ups! No pude responder, intenta de nuevo.",
+          text: `Aquí está tu imagen:`,
+          image: imageUrl, // Guardamos URL de imagen
         },
       ]);
-    } catch {
+    } catch (error) {
+      console.error("Error DeepAI:", error);
       setMessages((prev) => [
         ...prev,
         {
           from: "bot",
-          text: "¡Ups! Ocurrió un error al conectar con el asistente.",
+          text: "¡Ups! No pude generar la imagen, intenta de nuevo.",
         },
       ]);
     }
+
     setLoading(false);
     setInput("");
   };
@@ -66,18 +65,27 @@ const ChatBotModal = ({ open, handleClose }) => {
             <div
               key={i}
               className={msg.from === "user" ? "user-message" : "bot-message"}
-              style={{ textAlign: msg.from === "user" ? "right" : "left" }}
+              style={{
+                textAlign: msg.from === "user" ? "right" : "left",
+                margin: "10px 0",
+              }}
             >
-              {msg.text}
+              <div>{msg.text}</div>
+              {msg.image && (
+                <img
+                  src={msg.image}
+                  alt="Generada por IA"
+                  style={{ maxWidth: "100%", marginTop: "5px" }}
+                />
+              )}
             </div>
           ))}
-          {loading && (
-            <span className="chatbot-loader">
-              <CircularProgress size={20} />
-            </span>
-          )}
+          {loading && <CircularProgress size={20} />}
         </div>
-        <div className="chatbot-input-row">
+        <div
+          className="chatbot-input-row"
+          style={{ display: "flex", marginTop: "10px" }}
+        >
           <TextField
             fullWidth
             variant="outlined"
@@ -88,7 +96,12 @@ const ChatBotModal = ({ open, handleClose }) => {
             onKeyDown={(e) => e.key === "Enter" && handleSend()}
             placeholder="Escribe tu consulta..."
           />
-          <Button variant="contained" onClick={handleSend} disabled={loading}>
+          <Button
+            variant="contained"
+            onClick={handleSend}
+            disabled={loading}
+            style={{ marginLeft: "5px" }}
+          >
             Enviar
           </Button>
         </div>
