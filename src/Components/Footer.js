@@ -81,7 +81,7 @@ const Footer = () => {
       const successMsg =
         (data &&
           (data.message ||
-            (data.success && "¡Gracias! Te has suscrito correctamente."))) ||
+            (data.success && "¡Gracias! Te has suscripto correctamente."))) ||
         "¡Gracias! Te has suscrito correctamente.";
 
       setMessageType("success");
