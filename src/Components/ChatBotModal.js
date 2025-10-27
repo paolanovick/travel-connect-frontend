@@ -23,12 +23,15 @@ const ChatBotModal = ({ open, handleClose }) => {
     setLoading(true);
 
     try {
-      // Cambia la URL por la de tu webhook de n8n
- const resp = await fetch(process.env.REACT_APP_N8N_WEBHOOK_URL, {
-   method: "POST",
-   headers: { "Content-Type": "application/json" },
-   body: JSON.stringify({ message: input }),
- });
+const resp = await fetch(
+  process.env.REACT_APP_N8N_WEBHOOK_URL ||
+    "https://n8n.triptest.com.ar/webhook/chat-ia",
+  {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: input }),
+  }
+);
 
 
       const data = await resp.json();
