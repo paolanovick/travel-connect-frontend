@@ -24,11 +24,11 @@ const ChatBotModal = ({ open, handleClose }) => {
 
     try {
       // Cambia la URL por la de tu webhook de n8n
-  const resp = await fetch("/api/chatbot-proxy", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: input }),
-  });
+ const resp = await fetch(process.env.REACT_APP_N8N_WEBHOOK_URL, {
+   method: "POST",
+   headers: { "Content-Type": "application/json" },
+   body: JSON.stringify({ message: input }),
+ });
 
 
       const data = await resp.json();

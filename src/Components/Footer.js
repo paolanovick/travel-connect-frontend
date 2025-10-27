@@ -11,7 +11,9 @@ const Footer = () => {
   const timeoutRef = useRef(null);
   const abortRef = useRef(null);
 
-  const WEBHOOK_URL = "/api/footer-newsletter";
+  const WEBHOOK_URL =
+    process.env.REACT_APP_NEWSLETTER_WEBHOOK_URL ||
+    "https://n8n.triptest.com.ar/webhook/footer-newsletter";
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   useEffect(() => {

@@ -9,8 +9,10 @@ function Formulario() {
 
  const handleSubmit = async (e) => {
    e.preventDefault();
-   // Cambiar esta línea para apuntar directamente a n8n:
-   const backendUrl = "/api/webhook";
+ 
+   const backendUrl =
+     process.env.REACT_APP_CONTACT_WEBHOOK_URL ||
+     "https://n8n.triptest.com.ar/webhook/form";
 
    console.log("Enviando datos:", { nombre, email, mensaje });
 
@@ -23,7 +25,6 @@ function Formulario() {
        body: JSON.stringify({ nombre, email, mensaje }),
      });
 
-     
      const data = await response.json();
      console.log("Respuesta JSON:", data);
 
