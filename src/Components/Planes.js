@@ -4,7 +4,7 @@ import { FaWhatsapp } from "react-icons/fa";
 
 const Planes = () => {
   // Reemplaza este número por tu número de WhatsApp (con código de país)
-  const numeroWhatsApp = "5491151215750"; // Ejemplo: +54 9 11 2345-6789
+  const numeroWhatsApp = "5491155786993"; // Ejemplo: +54 9 11 2345-6789
 
   const planesData = [
     {
