@@ -83,8 +83,8 @@ const Footer = () => {
       const successMsg =
         (data &&
           (data.message ||
-            (data.success && "¡Graciaspor haberte suscripto correctamente!"))) ||
-        "¡Graciaspor haberte suscripto correctamente!";
+            (data.success && "¡Gracias! Te has suscripto correctamente."))) ||
+        "¡Gracias! Te has suscrito correctamente.";
 
       setMessageType("success");
       setMessage(successMsg);
@@ -93,7 +93,7 @@ const Footer = () => {
     } catch (error) {
       if (error.name === "AbortError") {
         setMessageType("error");
-        setMessage("La solicitud tardó mucho. Intenta nuevamente.");
+        setMessage("La solicitud tardó demasiado. Intenta nuevamente.");
       } else {
         console.error("Newsletter error:", error);
         setMessageType("error");

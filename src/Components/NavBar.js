@@ -23,7 +23,7 @@ const NavBar = () => {
 
   const menuOptions = [
     { text: "Inicio", icon: <HomeIcon />, link: "#inicio" },
-    { text: "Nosotros", icon: <InfoIcon />, link: "#nosotros" },
+    { text: "Nosotrosss", icon: <InfoIcon />, link: "#nosotros" },
     { text: "Productos", icon: <CommentRoundedIcon />, link: "#productos" },
     { text: "Planes", icon: <WorkIcon />, link: "#planes" },
     { text: "Contacto", icon: <PhoneRoundedIcon />, link: "#contacto" },
