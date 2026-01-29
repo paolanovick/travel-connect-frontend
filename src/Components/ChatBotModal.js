@@ -6,8 +6,7 @@ import {
   DialogContent,
   TextField,
   Button,
-  Box,
-  CircularProgress,
+    CircularProgress,
 } from "@mui/material";
 
 const ChatBotModal = ({ open, handleClose }) => {
